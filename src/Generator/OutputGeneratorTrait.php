@@ -44,6 +44,11 @@ trait OutputGeneratorTrait
         }
 
         $class = $context->getObjectClassMap()[spl_object_hash($resolvedSchema)];
+
+        if ($class === null) {
+            return [null, null];
+        }
+
         $class = $context->getNamespace() . "\\Model\\" . $class->getName();
 
         if ($array) {
